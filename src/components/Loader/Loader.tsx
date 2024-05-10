@@ -1,6 +1,10 @@
 import { Oval } from "react-loader-spinner";
 
-const Loader = ({ loading }) => {
+interface LoaderProps {
+  loading: boolean;
+}
+
+const Loader = ({ loading }: LoaderProps) => {
   return (
     <Oval
       visible={loading}

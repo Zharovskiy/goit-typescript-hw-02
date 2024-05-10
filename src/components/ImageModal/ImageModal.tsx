@@ -1,11 +1,20 @@
-import css from "./ImageModal.module.css";
 import { IoClose } from "react-icons/io5";
-import Modal from "react-modal";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { AiTwotoneLike } from "react-icons/ai";
 import { IoMdDownload } from "react-icons/io";
+import Modal from "react-modal";
+import { Image } from "../App/App.types";
 
-const ImageModal = ({ isOpen, imageModal, onClose }) => {
+import css from "./ImageModal.module.css";
+
+interface ImageModalProps {
+  isOpen: boolean;
+  imageModal: Image | null;
+  onClose: () => void;
+}
+
+const ImageModal = ({ isOpen, imageModal, onClose }: ImageModalProps) => {
+  if (!imageModal) return;
   const {
     alt_description,
     description,

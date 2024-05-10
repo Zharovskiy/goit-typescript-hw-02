@@ -1,7 +1,9 @@
+import toast, { Toaster } from "react-hot-toast";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { SearchValue } from "../App/App.types";
+
 import css from "./SearchBar.module.css";
-import toast, { Toaster } from "react-hot-toast";
 
 const notify = () =>
   toast("Text must be entered to search for images.", {
@@ -13,7 +15,11 @@ const notify = () =>
     },
   });
 
-const SearchBar = ({ handleSubmit }) => {
+interface SearchBarProps {
+  handleSubmit: (value: SearchValue) => void;
+}
+
+const SearchBar = ({ handleSubmit }: SearchBarProps) => {
   const validationSchema = Yup.object().shape({
     query: Yup.string().trim().required(notify),
   });
